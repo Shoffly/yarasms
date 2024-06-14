@@ -45,7 +45,7 @@ if uploaded_file:
             sms_text = sms_template.replace('[first_name]', str(row['first_name'])).replace('[promocode]', str(row['promocode']))
             sms_receiver = str(row['phone_number'])
             result = send_sms(api_endpoint, username, password, sms_text, sms_lang, sms_sender, sms_receiver)
-            results.append({'phone_number': sms_receiver, 'status': result})
+            results.append({'phone_number': sms_receiver, 'message': sms_text, 'status': result})
 
         results_df = pd.DataFrame(results)
         st.write("SMS Sending Results:")
